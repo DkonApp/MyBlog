@@ -33,4 +33,17 @@ Sure! Here’s the description of the "MyBlog" CMS translated into English:
 
 CMS "MyBlog" is an excellent choice for those who want to create a simple and beautiful blog without unnecessary complexities. It is perfect for personal projects, portfolios, or small business websites.
 
+### How to install
 
+1) Register to Dkon.app
+2) Go to Developer Mode https://dkon.app/account/settings/get_api_token
+   More info here -> https://dkon.app/dev/start
+3) Edit script.js
+   const accessToken = 'your token';
+   const profileId = your id;
+
+   
+   
+
+   
+   
