@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title id="site-title"></title>
+    <meta name="description" id="site-description">
+    <meta name="keywords" id="site-keywords">
+    <link href="https://res.dkon.app/project-blog/Roboto.css" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Roboto', sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: var(--background-color);
+            color: var(--text-color);
+        }
+        header {
+            background-color: var(--primary-color);
+            color: white;
+            padding: 20px;
+            text-align: center;
+        }
+        h1 {
+            margin: 0;
+        }
+        h2 {
+            color: var(--primary-color);
+        }
+        .container {
+            max-width: 800px;
+            margin: 20px auto;
+            padding: 20px;
+            background: white;
+            border-radius: 8px;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+        }
+        .post, .gallery-item {
+            border: 1px solid #ddd;
+            border-radius: 8px;
+            padding: 15px;
+            margin-bottom: 20px;
+            background: #fff;
+            transition: box-shadow 0.3s;
+        }
+        .post:hover, .gallery-item:hover {
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
+        }
+        .gallery {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-between;
+        }
+        .gallery-item {
+            margin: 5px;
+            width: calc(33.333% - 10px);
+            box-sizing: border-box;
+        }
+        img {
+            max-width: 100%;
+            border-radius: 8px;
+        }
+        @media (max-width: 768px) {
+            .gallery-item {
+                width: calc(50% - 10px);
+            }
+        }
+        @media (max-width: 480px) {
+            .gallery-item {
+                width: 100%;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <h1 id="headertitle"></h1>
+    </header>
+
+    <div class="container">
+        <h2>News</h2>
+        <div id="news"></div>
+
+        <h2>Gallery</h2>
+        <div class="gallery" id="gallery"></div>
+    </div>
+
+    <script src="config.js?dkon.app"></script>
+    <script src="script.js?dkon.apps"></script>
+    <script>
+        document.getElementById('site-title').innerText = siteConfig.title;
+        document.getElementById('site-description').setAttribute('content', siteConfig.description);
+        document.getElementById('site-keywords').setAttribute('content', siteConfig.keywords);
+
+        document.documentElement.style.setProperty('--primary-color', siteConfig.colorPalette.primary);
+        document.documentElement.style.setProperty('--secondary-color', siteConfig.colorPalette.secondary);
+        document.documentElement.style.setProperty('--text-color', siteConfig.colorPalette.textColor);
+        document.documentElement.style.setProperty('--background-color', siteConfig.colorPalette.backgroundColor);
+
+        const galleryContainer = document.getElementById('gallery');
+        if (siteConfig.galleryPosition === "top") {
+            const newsContainer = document.getElementById('news');
+            newsContainer.insertAdjacentElement('beforebegin', galleryContainer);
+        }
+    </script>
+</body>
+</html>
